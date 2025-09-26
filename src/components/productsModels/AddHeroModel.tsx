@@ -11,6 +11,8 @@ import {
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 interface AddHeroDialogProps {
   open: boolean;
   onClose: () => void;
@@ -41,7 +43,7 @@ export default function AddHeroDialog({ open, onClose, onSuccess }: AddHeroDialo
       formData.append('desc', desc);
       formData.append('image', imageFile);
 
-      const response = await axios.post('/auth/add-hero', formData, {
+      const response = await axios.post(`${API_URL}/auth/add-hero`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
 
