@@ -31,12 +31,7 @@ export default defineConfig({
       },
     ],
   },
-  server: {
-    proxy: {
-      '/api': 'http://localhost:8000',
-      '/auth': 'http://localhost:8000',
-    },
-  },
+  
   // server: { port: PORT, host: true },
   preview: { port: PORT, host: true },
 });

@@ -20,6 +20,9 @@ import { Icon } from '@iconify/react';
 
 import AddHeroDialog from "src/components/productsModels/AddHeroModel";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
+
 interface HeroType {
   _id: string;
   title: string;
@@ -36,7 +39,7 @@ export default function Hero() {
   // Fetch all heroes
   const getAllHeroes = async () => {
     try {
-      const response = await axios.get("/auth/get-hero", {
+      const response = await axios.get(`${API_URL}/auth/get-hero`, {
         headers: { "Content-Type": "application/json" },
       });
       if (response?.data?.success) {
@@ -58,7 +61,7 @@ export default function Hero() {
   const handleDeleteHero = async () => {
     if (!selectedHero) return;
     try {
-      const response = await axios.delete(`/auth/delete-hero/${selectedHero._id}`);
+      const response = await axios.delete(`${API_URL}/auth/delete-hero/${selectedHero._id}`);
       if (response?.data?.success) {
         toast.success("Hero deleted successfully!");
         setHeroes((prev) => prev.filter((hero) => hero._id !== selectedHero._id));

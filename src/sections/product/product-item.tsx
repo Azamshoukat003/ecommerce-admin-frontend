@@ -15,6 +15,9 @@ import AddProductDialog from 'src/components/productsModels/AddProductDialog';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
+
 // ----------------------------------------------------------------------
 
 export type ProductItemProps = {
@@ -58,7 +61,7 @@ export function ProductItem({
     if (!product._id) return;
 
     try {
-      const res = await axios.delete(`/auth/delete-product/${product._id}`);
+      const res = await axios.delete(`${API_URL}/auth/delete-product/${product._id}`);
       if (res.data.success) {
         toast.success('Product deleted successfully');
         setOpen(false);

@@ -21,6 +21,8 @@ import AddProductDialog from 'src/components/productsModels/AddProductDialog';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 interface Product {
   _id: string;
   productImage: string;
@@ -117,7 +119,7 @@ export function ProductsView() {
 
   const getALlCategories = async () => {
     try {
-      const response = await axios.get('/auth/get-categories', {
+      const response = await axios.get(`${API_URL}/auth/get-categories`, {
         headers: { 'Content-Type': 'application/json' },
       });
       if (response?.data?.success) {
@@ -136,7 +138,7 @@ export function ProductsView() {
   };
   const getAllModels = async () => {
     try {
-      const response = await axios.get('/auth/get-models', {
+      const response = await axios.get(`${API_URL}/auth/get-models`, {
         headers: { 'Content-Type': 'application/json' },
       });
       if (response?.data?.success) {
@@ -154,7 +156,7 @@ export function ProductsView() {
 
   const getAllProducts = async () => {
     try {
-      const response = await axios.get('/auth/get-products', {
+      const response = await axios.get(`${API_URL}/auth/get-products`, {
         headers: { 'Content-Type': 'application/json' },
       });
       if (response?.data?.success) {

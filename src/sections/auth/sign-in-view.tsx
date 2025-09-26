@@ -15,6 +15,9 @@ import { Iconify } from 'src/components/iconify';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
+
 // ----------------------------------------------------------------------
 
 export function SignInView() {
@@ -26,9 +29,9 @@ export function SignInView() {
   const handleSignIn = async () => {
     try {
       const response = await axios.post(
-        '/auth/admin',
+        `${API_URL}/auth/admin`,
         { email, password },
-        { headers: { 'Content-Type': 'application/json' } }
+        { withCredentials:true }
       );
 
       console.log(response?.data?.data);
